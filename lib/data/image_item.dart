@@ -11,7 +11,12 @@ class ImageItem {
   Completer<bool> loader = Completer<bool>();
 
   ImageItem([dynamic image]) {
-    if (image != null) load(image);
+    if (image != null) {
+      load(
+        image,
+        describeTxt: title,
+      );
+    }
   }
 
   Future load(dynamic image, {String? describeTxt}) async {

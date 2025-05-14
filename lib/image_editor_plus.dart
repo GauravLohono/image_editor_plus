@@ -377,7 +377,10 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                   );
 
                                   if (editedImage != null) {
-                                    image.load(editedImage);
+                                    image.load(
+                                      editedImage,
+                                      describeTxt: image.title,
+                                    );
                                   }
 
                                   setState(() {});
@@ -934,7 +937,10 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                         flipValue = 0;
                         rotateValue = 0;
 
-                        await currentImage.load(croppedImage);
+                        await currentImage.load(
+                          croppedImage,
+                          describeTxt: currentImage.title,
+                        );
                         setState(() {});
                       },
                     ),
@@ -989,7 +995,10 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                           );
 
                           if (drawing != null) {
-                            currentImage.load(drawing);
+                            currentImage.load(
+                              drawing,
+                              describeTxt: currentImage.title,
+                            );
 
                             setState(() {});
                           }
@@ -1347,7 +1356,10 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
       }
     }
 
-    await currentImage.load(imageFile);
+    await currentImage.load(
+      imageFile,
+      describeTxt: currentImage.title,
+    );
 
     layers.clear();
 
