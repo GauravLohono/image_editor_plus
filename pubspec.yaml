@@ -13,16 +13,16 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  font_awesome_flutter: ^10.1.0
-  image_picker: ^1.0.0
+  font_awesome_flutter: ^10.8.0
+  image_picker: ^1.1.2
   screenshot: ^3.0.0
-  extended_image: ^8.1.0
+  extended_image: ^8.2.0
   image: ^4.0.15
   colorfilter_generator: ^0.0.8
   hand_signature: ^3.0.0
   reorderables: ^0.6.0
-  permission_handler: ^11.1.0
-  flex_color_picker: ^3.5.0
+  permission_handler: ^12.0.0+1
+  flex_color_picker: ^3.7.1
 
 dev_dependencies:
   flutter_test:
