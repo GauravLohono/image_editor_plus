@@ -22,6 +22,10 @@ class ImageItem {
   Future load(dynamic image, {String? describeTxt}) async {
     loader = Completer<bool>();
 
+    if(image == null){
+      return loader.complete(false);
+    }
+
     if (image is ImageItem) {
       title = describeTxt ?? "";
       bytes = image.bytes;
@@ -49,7 +53,14 @@ class ImageItem {
 
       return loader.complete(true);
     } else {
-      return loader.complete(false);
+      title = describeTxt ?? "";
+      bytes = image;
+      var decodedImage = await decodeImageFromList(bytes);
+
+      height = decodedImage.height;
+      width = decodedImage.width;
+
+      return loader.complete(true);
     }
   }
 
