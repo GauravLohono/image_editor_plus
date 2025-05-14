@@ -298,7 +298,10 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                             // print(img);
 
                             if (img != null) {
-                              image.load(img);
+                              image.load(
+                                img,
+                                describeTxt: img["title"],
+                              );
                               setState(() {});
                             }
                           },
@@ -840,7 +843,8 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
               left: 2,
               child: SafeArea(
                 child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                     child: GestureDetector(
                       // onTap: () =>FocusScope.of(context).requestFocus(FocusNode()),
                       child: SingleChildScrollView(

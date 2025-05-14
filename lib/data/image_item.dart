@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageItem {
+  String title = "";
   int width = 1;
   int height = 1;
   Uint8List bytes = Uint8List.fromList([]);
@@ -13,10 +14,11 @@ class ImageItem {
     if (image != null) load(image);
   }
 
-  Future load(dynamic image) async {
+  Future load(dynamic image, {String? describeTxt}) async {
     loader = Completer<bool>();
 
     if (image is ImageItem) {
+      title = describeTxt ?? "";
       bytes = image.bytes;
 
       height = image.height;
@@ -24,6 +26,7 @@ class ImageItem {
 
       return loader.complete(true);
     } else if (image is Uint8List) {
+      title = describeTxt ?? "";
       bytes = image;
       var decodedImage = await decodeImageFromList(bytes);
 
@@ -32,6 +35,7 @@ class ImageItem {
 
       return loader.complete(true);
     } else if (image is XFile) {
+      title = describeTxt ?? "";
       bytes = await image.readAsBytes();
       var decodedImage = await decodeImageFromList(bytes);
 
@@ -46,7 +50,7 @@ class ImageItem {
 
   static ImageItem fromJson(Map json) {
     var image = ImageItem(json['bytes']);
-
+    image.title = json['title'];
     image.width = json['width'];
     image.height = json['height'];
 
@@ -58,6 +62,7 @@ class ImageItem {
       'height': height,
       'width': width,
       'bytes': bytes,
+      'title': title,
     };
   }
 }
