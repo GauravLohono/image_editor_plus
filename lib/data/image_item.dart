@@ -13,8 +13,7 @@ class ImageItem {
   ImageItem([dynamic image]) {
     if (image != null) {
       load(
-        image,
-        describeTxt: title,
+        image
       );
     }
   }
@@ -53,13 +52,6 @@ class ImageItem {
 
       return loader.complete(true);
     } else {
-      title = describeTxt ?? "";
-      bytes = image;
-      var decodedImage = await decodeImageFromList(bytes);
-
-      height = decodedImage.height;
-      width = decodedImage.width;
-
       return loader.complete(true);
     }
   }

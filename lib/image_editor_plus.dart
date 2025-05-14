@@ -299,7 +299,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
 
                             if (img != null) {
                               image.load(
-                                img,
+                                img["image"],
                                 describeTxt: img["title"],
                               );
                               setState(() {});
